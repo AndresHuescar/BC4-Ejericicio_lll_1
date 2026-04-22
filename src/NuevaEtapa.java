@@ -58,7 +58,7 @@ public class NuevaEtapa {
                 throw new SQLException("No hay ciclistas");
             }
 
-            // MEZCLAR PARA POSICIONES RANDOM
+            // mezcla de psosicionas random
             Collections.shuffle(ciclistas);
 
             int[] puntosTabla = {100, 90, 80, 70, 60};
@@ -66,7 +66,7 @@ public class NuevaEtapa {
             String sqlPart = "INSERT INTO PARTICIPACION(numero_etapa, id_ciclista, posicion, puntos) VALUES (?, ?, ?, ?)";
             PreparedStatement psPart = con.prepareStatement(sqlPart);
 
-            // INSERT PARTICIPACION
+            // inset de particion
             for (int i = 0; i < ciclistas.size(); i++) {
 
                 int puntos = (i < puntosTabla.length) ? puntosTabla[i] : 0;
@@ -79,7 +79,7 @@ public class NuevaEtapa {
                 psPart.executeUpdate();
             }
 
-            // ✅ COMMIT
+            // commit
             con.commit();
 
             System.out.println("Etapa " + numero + " insertada correctamente");
